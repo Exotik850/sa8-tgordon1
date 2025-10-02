@@ -2,9 +2,9 @@ class Repository
   attr_reader :name, :branches, :current_branch
 
   def initialize
-    @commits         = {}                 # commit_id => Commit
-    @branches        = { "main" => nil }  # branch_name (String) => head_commit_id (or nil)
-    @current_branch  = "main"
+    @commits = {}                 # commit_id => Commit
+    @branches = { "main" => nil }  # branch_name (String) => head_commit_id (or nil)
+    @current_branch = "main"
   end
 
   def create_branch(name)
@@ -43,7 +43,7 @@ class Repository
     commit = Commit.new(
       message: message,
       author: author,
-      parent: parent_commit
+      parent: parent_commit,
     )
 
     # advance branch head and index commit

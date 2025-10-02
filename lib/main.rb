@@ -12,13 +12,13 @@
 # This system demonstrates core version control concepts.
 # The demo shows two authors (Ava and Grace) making commits, creating and switching between branches, and viewing branch logs.
 
-require_relative 'commit'
-require_relative 'repository'
-require_relative 'author'
+require_relative "commit"
+require_relative "repository"
+require_relative "author"
 
 repo = Repository.new
-ada = Author.new("Ava","ava@example.org")
-grace = Author.new("Grace","grace@example.org")
+ada = Author.new("Ava", "ava@example.org")
+grace = Author.new("Grace", "grace@example.org")
 
 repo.commit!(message: "Init README", author: ada)
 
@@ -29,9 +29,9 @@ repo.commit!(message: "Add docs", author: grace)
 repo.switch("main")
 repo.commit!(message: "Tweak README", author: ada)
 
-puts "Branches: #{repo.branches.keys.join(', ')}"
-puts "main HEAD id:    #{repo.branch('main')}"
-puts "feature HEAD id: #{repo.branch('feature/docs')}"
+puts "Branches: #{repo.branches.keys.join(", ")}"
+puts "main HEAD id:    #{repo.branch("main")}"
+puts "feature HEAD id: #{repo.branch("feature/docs")}"
 
 puts "\nLog (main):"
 repo.log("main").each { |c| puts " * #{c.id} #{c.message} (#{c.author.email})" }
